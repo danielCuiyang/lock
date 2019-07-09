@@ -1,0 +1,170 @@
+@import '../../style/dialog.wxss';
+.detail{
+    padding-bottom: 10rpx;
+}
+.header{
+    height: 60rpx;
+    background: rgb(242,242,242);
+    line-height: 48rpx;
+    color:#181818;
+    padding: 30rpx;
+    display: flex;
+}
+.header .title{
+    flex: 1;
+    font-size:28rpx;
+    line-height:60rpx;
+}
+.header .special{
+    color:rgb(242,157,56);
+    border:1px solid rgb(242,157,56);
+    height: 60rpx;
+    padding:0 10rpx;
+    box-sizing: border-box;
+    border-radius: 5rpx;
+    font-size:28rpx;
+    line-height: 60rpx;
+}
+.header .cancel_special{
+    margin-left: 20rpx;
+}
+.header .special_hover{
+    color:rgb(242,191,79);
+}
+.list_box{
+    position: relative;
+    padding:10rpx 30rpx;
+}
+.list_box .price{
+    color:#fa5654;
+    padding:0;
+}
+.list_box .remark{
+    width:48px;
+    height: 48px;
+    padding:0;
+    position: absolute;
+    top: 280rpx;
+    right:60rpx;
+}
+
+.list_box .remark image{
+    width:100%;
+    height: 100%;
+}
+.label{
+    font-size: 10pt;
+    color:#888;
+    width:70px;
+    display:inline-block;
+    text-align: right;
+    padding-right: 20rpx;
+}
+.content{
+    color:#181818;
+    font-size: 28rpx;
+}
+.content_time{
+    margin-left: 20rpx;
+}
+.repair{
+    color:#f44444;
+}
+.list_box .btn{
+    padding: 0;
+}
+.list_box .section {
+    display: flex;
+}
+.list_box .section .content{
+    flex:1;
+}
+.list_box  .content_fc{
+    color:rgb(82,150,42);
+}
+.remark_box{
+    text-align: center;
+}
+.remark_box .remark_fc{
+    text-align: center;
+    color:#181818;
+    font-size: 24rpx;
+}
+.list_box .remark_fc{
+    color:#181818;
+    font-size: 28rpx;  
+}
+/* 修改信息弹框 */
+.info_box{
+    height: 556rpx;
+}
+.info_box .content{
+    padding:20rpx 40rpx;
+    box-sizing: border-box;
+}
+.info_box .content .btn{
+    left: 0;
+}
+.form .section{
+    display: flex;
+    margin-bottom: 38rpx;
+    position: relative;
+}
+.section__title {
+    color:#181818;
+    font-size: 28rpx;
+    width:140rpx;
+    height: 45rpx;
+    line-height:45rpx;
+}
+.info_box .content input,.info_box .content textarea{
+    flex: 1;
+    line-height:45rpx;
+    border-radius: 3px;
+    height: 45rpx;
+    border: solid 1px #f7ede3;
+    text-align: left;
+    padding-left: 30rpx;
+    /* background: #f7ede3; */
+    color:#181818;
+}
+.info_box .content textarea{
+    height: 120rpx;
+}
+/* sn弹框 */
+.sn_box{
+    height:350rpx ;
+}
+.sn_box .content{
+    margin-top: 25rpx;
+}
+.sn_box .form  .section{
+    margin:0;
+}
+/* 图片上传 */
+.weui-cells{
+    margin:0;
+}
+.weui-uploader__title,.weui-uploader__info{
+    font-size: 28rpx;
+}
+.confirmComplete{
+    background:rgb(242,157,56);
+    color:#fff;
+    font-size:28rpx;
+    line-height:88rpx;
+}
+.weui-uploader__file {
+    float:left;
+    padding-right:9px;
+    margin-bottom:9px;
+    margin-right: 0;
+    height:80px;
+    width:25%;
+    box-sizing:border-box;
+}
+.weui-uploader__file image{
+    width:100%;
+    height: 100%;
+}
+    

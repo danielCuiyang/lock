@@ -1,0 +1,165 @@
+<view class="list {{listId==4 || listId==5 ? 'complete' : ''}}">
+    <block wx:for="{{list}}" wx:key="{{item.id}}">
+       <view class="list_box">
+            <view class="price">￥{{item.total_fee}}</view>
+            <view class="remark {{item.status==4||item.status==5 ?'special_remark' : 'normal_remark'}}" wx-if="{{item.emp_remark}}">
+                <image  src="../../images/icon06.png"  data-idx="{{index}}"  bind:tap="showRemark" />
+            </view>
+            <view>
+                <text class="label">工单号:</text>
+                <text class="content">{{item.order_num}}</text>
+                <text class="content exception" data-idx="{{index}}"  bind:tap="showERemark"  wx:if="{{item.is_exception == 1}}">(异常中)</text>
+            </view>
+            <view>
+                <text class="label">安装类型:</text>
+                <text wx:if="{{item.type == '正常安装' }}" class="content">{{item.type}}</text>
+                <text wx:if="{{item.type == '维修' }}" class="content repair">{{item.type}}</text>
+            </view>
+            <view>
+                <text class="label">锁品牌:</text>
+                <text class="content">{{item.lock_brand}}</text>
+            </view>
+            <view>
+                <text class="label">锁数量:</text>
+                <text class="content">{{item.lock_num}}把</text>
+            </view>
+            <block wx:if="{{item.status == 3 || item.status == 2}}">
+                <view>
+                    <text class="label">联系人:</text>
+                    <text class="content">{{item.customer_name}}</text>
+                </view>
+                <view>
+                    <text class="label">联系电话:</text>
+                    <text class="content">{{item.phone}}</text>
+                </view>
+            </block>
+            <block wx:if="{{item.status ==3 ||item.status ==4 }}">
+                <view >
+                    <text class="label">预约时间:</text>
+                    <text class="content">{{item.date}}</text>
+                    <text class="content content_time">{{item.time.text}}</text>
+                </view>
+                <view wx:if="{{item.status == 4}}" >
+                    <text class="label">完工时间:</text>
+                    <text class="content">{{item.handled_at}}</text>
+                </view>
+            </block>
+            <block wx:if="{{item.status == 5}}">
+                <view >
+                    <text class="label">完工时间:</text>
+                    <text class="content">{{item.handled_at}}</text>
+                </view>
+                <view >
+                    <text class="label">结算时间:</text>
+                    <text class="content">{{item.settled_at}}</text>
+                </view>
+            </block>
+            <block wx:if="{{item.status==2||item.status==3}}">
+                <view class="address">
+                    <text class="label">安装地址:</text>
+                    <text class="content">{{item.address}}</text>
+                </view>
+            </block>
+            <view class="btn">
+                <block wx:if="{{item.status == 2}}">
+                        <button wx:if="{{item.type=='正常安装'}}"                 data-id="{{item.id}}" data-lidx="{{index}}" data-type="1" class="btn_time" bind:tap="openDialog">预约安装时间</button>
+                        <button wx:if="{{item.type == '维修'}}" class="btn_time" data-id="{{item.id}}" data-lidx="{{index}}" data-type="2"  bind:tap="openDialog">预约维修时间</button>
+                </block>
+                <block wx:if="{{item.status == 3}}">
+                    <button data-id="{{item.id}}" data-lidx="{{index}}"  bind:tap="confirmComplete" >确认完工</button>
+                </block>
+                <block wx:if="{{item.status == 4}}">
+                        <button class="fc special_fc">已完工,待结算</button>
+                </block>
+                <block wx:if="{{item.status == 5}}">
+                    <button class="fc special_fc">已结算</button>
+                </block>
+                <!-- <view class="line"></view> -->
+                <button class="btn_detail" data-id="{{item.id}}" bind:tap="goDetail">查看详情</button>
+            </view>           
+            
+       </view>
+    </block>
+    <!-- 加载动画 -->
+    <block wx:if="{{!loadend&&!empty}}"> 
+        <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+    </block>
+    <block wx:if="{{empty}}">
+        <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+        </view>
+    </block>
+    <!-- 时间弹框 -->
+        <view class="dialog_time" hidden="{{hiddenTime}}" >
+            <view class="title">{{timeTitle}}</view>
+            <view class="content">
+
+                <view class="label">
+                    选择日期:
+                </view>
+                <picker class="date" mode="date" value="{{date}}"  bindchange="bindDateChange">
+                    <view class="picker">
+                        {{date}}
+                    </view>
+                    <image class="date_icon" src="../../images/icon07.png"></image>
+                </picker>
+                <view class="label">
+                    选择时间段:
+                </view>
+                <picker class="date time" bindchange="bindPickerChange" value="{{index}}" range="{{timeArray}}">
+                    <view class="picker">
+                        {{timeArray[index]}}
+                    </view>
+                    <image class="date_icon" src="../../images/icon08.png"></image>
+                </picker>
+            </view>
+            <view class="btn">
+                <button class="fc" bind:tap="cancelDialog">取消</button>
+                <button class="btn_detail" bind:tap="confirmTime">确认预约</button>
+            </view>
+        </view>
+    <!-- 显示备注弹框 -->
+        <view class="dialog_time remark" hidden="{{!showRemarkD}}">
+            <view class="title">备注</view>
+            <view class="content">
+                   {{remarkContent}}
+              </view>
+            <view class="btn cancel_btn">
+                <button class="fc bt " bind:tap="closeRemarkD">关闭</button>
+            </view>
+        </view>
+    <!-- 显示异常备注弹框 -->
+        <view class="dialog_time remark" hidden="{{!showERemarkD}}">
+            <view class="title">异常备注</view>
+            <view class="content">
+                   {{exceptionR}}
+              </view>
+            <view class="btn cancel_btn">
+                <button class="fc bt " bind:tap="closeERemark">关闭</button>
+            </view>
+        </view>
+    <!-- 确认完工弹框 -->
+    <block>
+        <view class="dialog_time complete_dialog remark" hidden="{{hideComplete}}">
+                <view class="title">是否确认完工</view>
+                <view class="tip">
+                    <view class="tip_icon">
+                        <image src="../../images/icon09.png"></image>
+                    </view>
+                    <view class="tip_c tip_fc">温馨提示:</view>
+                    <view class="tip_c">请确认已上传完工图片及SN号,确认完工后,订单状态将改为完工,操作不可回退。</view>
+                </view>
+                <view class="btn cancel_btn">
+                    <button class="fc" bind:tap="hdComplete">取消</button>
+                    <button class="btn_detail" bind:tap="cmCompleteDialog">确认完工</button>
+                </view>
+            </view>
+    </block>
+    <!--  -->
+    <view class="mask" hidden="{{hiddenTime&&!showRemarkD&&!showERemarkD&&hideComplete}}">
+
+    </view>
+</view>

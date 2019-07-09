@@ -1,0 +1,77 @@
+.userinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(236,101,95);
+    padding-bottom: 25rpx;
+}
+  
+.userinfo_avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+  
+.userinfo_nickname {
+    color: #fff;
+}
+
+.business_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:20rpx 20rpx 0rpx 40rpx;    
+}
+.account{
+    line-height: 60rpx;
+    font-size: 11pt;
+    color:#888;
+}
+.account_price{
+    line-height: 60rpx;
+    font-size: 16pt;
+    color:#F44444;
+    padding-bottom: 20rpx;
+    border-bottom:1px solid #ededed;
+}
+.weui_accounts{
+    padding:30rpx 20rpx 0rpx 40rpx;
+}
+.weui_account{
+    padding-bottom: 10rpx;
+    border-bottom: 1px solid #ededed;
+
+}
+.order{
+    text-align: left;
+    font-family: Regular;
+    font-size: 11pt;
+    color:#888;
+}
+.order_msg{
+    font-family: 'Light';
+    text-align: left;
+    font-size: 16pt;
+    color:#000;
+}
+.weui-grids{
+    border:none;
+    padding:10rpx;
+}
+.weui-grid{
+    border:none;
+}
+.weui-grid__icon {
+    width:64px;
+    height: 64px;
+}
+.weui-grid__label {
+    margin-top: 10px;
+    color:#888;
+
+}
+.weui-grid__label_c{
+    color:#f44444;
+    margin: 0;
+}

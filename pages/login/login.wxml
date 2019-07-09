@@ -1,0 +1,30 @@
+<!--login.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit" class="form">
+      <view class="section">
+          <view class="section__title">账号:</view>
+          <input class="account" name="account" placeholder="请输入账号" />
+      </view>
+      <view class="section">
+          <view class="section__title">密码:</view>
+          <input type="{{type}}" class="pwd" name="password" placeholder="请输入密码" />
+          <view class="pwd_icon" bind:tap="watchPwd">
+              <image src="{{icon}}"></image>
+          </view>
+      </view>
+      <view class="section">
+          <view class="section__title">验证码:</view>
+          <input class="code" name="code" placeholder="请输入验证码" />
+      </view>
+      <view class="section code_box">
+          <view class="code_img">
+              <image src="{{src}}"></image>
+          </view>
+          <view class="refresh" bind:tap="refreshCode">
+              <image src="../../images/icon10.png"></image>
+          </view>
+      </view>
+      <button form-type="submit" class="submit" hover-class="btn_hover">登录</button>
+  </form>
+
+</view>

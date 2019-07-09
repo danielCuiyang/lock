@@ -1,0 +1,84 @@
+/**login.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+.form{
+  width: 100%;
+  padding:50rpx;
+  box-sizing: border-box;
+}
+.section{
+  display: flex;
+  margin-bottom: 38rpx;
+  position: relative;
+}
+.pwd{
+  padding-right: 38px;
+}
+.pwd_icon{
+  position: absolute;
+  width:32px;
+  height: 90rpx;
+  right: 15rpx;
+  text-align: center;
+  line-height:90rpx;
+  z-index: 2;
+}
+.pwd_icon image{
+  width:16px;
+  height: 16px;
+  vertical-align: middle;
+}
+.section__title {
+  color:#181818;
+  font-size: 28rpx;
+  width:140rpx;
+  height: 90rpx;
+  line-height:90rpx;
+}
+.account,.pwd,.code{
+    flex: 1;
+    line-height:90rpx;
+    border-radius: 3px;
+    height: 90rpx;
+    border: solid 1px #f7ede3;
+    text-align: left;
+    padding-left: 50rpx;
+    background: #fff5ed;
+    color:#181818;
+}
+.code_box{
+  padding-left: 140rpx;
+  position: relative;
+  margin-bottom: 50rpx;
+}
+.code_img{
+  width:180px;
+  height: 50px;
+}
+.refresh{
+  width:32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  right: 0;
+}
+.submit{
+  background: rgb(242,157,56);
+  color:#fff;
+  border:none;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  line-height: 88rpx;
+}
+.container .btn_hover{
+  background:rgb(216,128,24);
+}

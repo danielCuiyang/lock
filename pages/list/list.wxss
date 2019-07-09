@@ -1,0 +1,7 @@
+@import '../../style/list.wxss';
+@import '../../style/dialog.wxss';
+.complete .btn .fc{
+    color: #67c23a;
+    background: #fff;
+}
+

@@ -1,0 +1,86 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
+	"appid": "wxb8bbf7945cfe3ea2",
+	"projectname": "%E6%99%BA%E8%83%BD%E9%94%81",
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "预约",
+					"pathName": "pages/list/list",
+					"query": "id=2&openid=oo3rW5RlRJJ8m9sPnOn_-QmDWN-k",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "安装",
+					"pathName": "pages/list/list",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "详情",
+					"pathName": "pages/detail/detail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "异常详情",
+					"pathName": "pages/detail/detail",
+					"query": "id=3",
+					"scene": null
+				}
+			]
+		}
+	}
+}
