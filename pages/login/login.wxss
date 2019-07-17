@@ -82,3 +82,11 @@
 .container .btn_hover{
   background:rgb(216,128,24);
 }
+.register{
+  margin-top: 30rpx;
+  color: #fa911e;
+  text-align: center;
+}
+.registerH{
+  color: #f08200;
+}

@@ -11,6 +11,11 @@ Page({
   //事件处理函数
   onLoad: function () {
   },
+  goto(){
+    wx.navigateTo({
+      url: '/pages/register/register'
+    })
+  },
   validate(formData){
     if(!formData.account){
       return {code:'error',msg:"账号不能为空"}

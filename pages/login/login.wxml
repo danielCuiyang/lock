@@ -25,6 +25,9 @@
           </view>
       </view>
       <button form-type="submit" class="submit" hover-class="btn_hover">登录</button>
+      <view class="register" hover-class="registerH" bind:tap="goto">
+            申请成为技师
+      </view>
   </form>
 
 </view>

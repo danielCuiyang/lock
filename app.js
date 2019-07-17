@@ -5,7 +5,6 @@ App({
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
-    // 登录
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -40,11 +39,11 @@ App({
             success:result=>{
               let res = result.data
               this.globalData.openid = res.data.openid
-              if(res.status == '403'){
+              // if(res.status == '403'){
                 wx.redirectTo({
                   url: '/pages/login/login',
                 })
-              }
+              // }
               resolve()
             }
           })

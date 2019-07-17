@@ -1,0 +1,42 @@
+<!--register.wxml-->
+<view class="container">
+    <form bindsubmit="formSubmit" class="form">
+        <view class="section">
+            <view class="section__title">姓名:</view>
+            <input class="account" name="user_name" placeholder="请输入姓名" />
+        </view>
+        <view class="section">
+            <view class="section__title">联系方式:</view>
+            <input class="code" name="phone" placeholder="请输入你的手机号" />
+        </view>
+        <view class="section">
+            <view class="section__title">期望接单价:</view>
+            <input class="code" name="price" placeholder="请输入你的期望接单价" />
+        </view>
+        <view class="section">
+            <view class="section__title">接单区域:</view>
+            <picker class="region" mode="region" bindchange="bindRegionChange">
+                    <input class="" disabled="true" value="{{region}}" name="region" placeholder="请选择你的接单区域" />
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">当前住址:</view>
+            <picker class="region" mode="region" bindchange="bindAddressChange">
+                    <input class="" disabled="true" value="{{address}}" name="address" placeholder="请选择你的当前住址" />
+            </picker>
+        </view>
+        <view class="section">
+            <view class="section__title">详细地址:</view>
+            <input class="code" name="address_detail" placeholder="请输入你的详细地址" />
+        </view>
+        <view class="section skill_sec">
+            <view class="section__title">安装能力:</view>
+        </view>
+        <view>
+            <textarea  name="skill" placeholder="请简要叙述你的安装能力,工作年限,安装过哪些智能锁品牌等方面"></textarea>
+        </view>
+        <button form-type="submit" class="submit" hover-class="btn_hover">登录</button>
+    </form>
+  
+  </view>
+  
