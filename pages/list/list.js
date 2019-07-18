@@ -3,12 +3,13 @@ const app = getApp()
 Page({
     data:{
         listId:'2',
+        init:false, //onload 不与 onshow 同时getData
         orderId:'',
         page:1,
         list:[],
         lidx:'', //选中的订单的 index, 用于前端更新页面
         // 加载=>key
-        loadEnd:true,
+        loadEnd:false, //false 不显示加载中
         empty:false,
         // 预约时间=>key
         hiddenTime:true,
@@ -29,11 +30,12 @@ Page({
     },
     onReachBottom: function() {
         // Do something when page reach bottom.
-        if(this.data.loadEnd&&!this.data.empty){
+        if(!this.data.loadEnd&&!this.data.empty){
             let page = this.data.page
             page++
             this.setData({
-                page
+                page,
+                loadEnd:true
             })
             this.getData()
         } 
@@ -50,22 +52,26 @@ Page({
               let res = result.data.data
               if(res.data.length == 0 ){
                 this.setData({
-                    loadEnd:true,
+                    loadEnd:false,
                     empty:true,
+                    init:true
                 })
                 return
               }
               if(res.data.length < 20 && page ==1){
                 list = [...list,...res.data]
                 this.setData({
-                    loadEnd:true,
+                    loadEnd:false,
                     empty:true,
-                    list
+                    list,
+                    init:true
                 })
               }else{
                 list = [...list,...res.data]
                 this.setData({
-                  list
+                  list,
+                  loadEnd:false,
+                  init:true
                 })
               }
             }
@@ -80,6 +86,7 @@ Page({
     },
     onLoad(e){
         let date = util.formatTime(new Date());
+        let init = this.data.init
         var wxTitle = {
             "2": "待预约",
             "3": "待安装",
@@ -90,15 +97,17 @@ Page({
         var listId = e.id;
         this.setData({
             listId,
-            date
+            date,
         })
-        this.getData()
+        if(!this.data.init){
+            this.getData()
+        }
         wx.setNavigationBarTitle({
             title: wxTitle[listId],
         })
     },
     onShow(){
-        if(this.data.listId){
+        if(this.data.listId&&this.data.init){
             this.setData({
                 list:[],
                 page:1,
