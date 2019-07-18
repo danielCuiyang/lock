@@ -4,12 +4,17 @@ const app = getApp()
 
 Page({
   data: {
-    src:'http://wws.zhaoxiaoqiang.com/site/code',
+    src:'',
     icon:"../../images/icon11.png",
     type:'password',
   },
   //事件处理函数
   onLoad: function () {
+    let openid = app.globalData.openid
+    let src = `http://wws.zhaoxiaoqiang.com/site/code?position=${openid}`
+    this.setData({
+      src
+    })
   },
   goto(){
     wx.navigateTo({
@@ -31,7 +36,8 @@ Page({
   },
   refreshCode(){
     var arg = Math.random();
-    let src = `http://wws.zhaoxiaoqiang.com/site/code?id=${arg}`
+    let openid = app.globalData.openid
+    let src = `http://wws.zhaoxiaoqiang.com/site/code?id=${arg}&position=${openid}`
     this.setData({
       src
     })
@@ -66,7 +72,8 @@ Page({
       phone:formData.account,
       password:formData.password,
       code:formData.code,
-      openid
+      openid,
+      position:openid
     }
     wx.showLoading({
       title: '登录中'

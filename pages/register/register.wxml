@@ -27,13 +27,13 @@
         </view>
         <view class="section">
             <view class="section__title">详细地址:</view>
-            <input class="code" name="address_detail" placeholder="请输入你的详细地址" />
+            <input class="code" maxlength="250" name="address_detail" placeholder="请输入你的详细地址" />
         </view>
         <view class="section skill_sec">
             <view class="section__title">安装能力:</view>
         </view>
         <view>
-            <textarea  name="skill" placeholder="请简要叙述你的安装能力,工作年限,安装过哪些智能锁品牌等方面"></textarea>
+            <textarea maxlength="250" name="skill" placeholder="请简要叙述你的安装能力,工作年限,安装过哪些智能锁品牌等,字数在250字以内。"></textarea>
         </view>
         <button form-type="submit" class="submit" hover-class="btn_hover">登录</button>
     </form>

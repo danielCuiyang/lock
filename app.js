@@ -39,11 +39,11 @@ App({
             success:result=>{
               let res = result.data
               this.globalData.openid = res.data.openid
-              // if(res.status == '403'){
+              if(res.status == '403'){
                 wx.redirectTo({
                   url: '/pages/login/login',
                 })
-              // }
+              }
               resolve()
             }
           })

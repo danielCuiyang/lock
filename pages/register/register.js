@@ -44,7 +44,6 @@ Page({
   },
   formSubmit: function(e) {
     let formData =  e.detail.value
-    console.log(formData)
     let res = this.validate(formData)
     let url = app.globalData.url
     let openid = app.globalData.openid
@@ -57,19 +56,18 @@ Page({
     }
     let data = {
       phone:formData.phone,
-      region:formData.region,
-      address:formData.address,
-      address_detail:formData.address_detail,
-      user_name:formData.user_name,
-      price:formData.price,
-      openid
+      accept_area:formData.region,
+      current_address:formData.address,
+      detail_address:formData.address_detail,
+      name:formData.user_name,
+      accept_fee:formData.price,
+      remark:formData.skill
     }
     wx.showLoading({
       title: '提交资料中'
     })
-    return 
     wx.request({
-      url: `${url}/wechat/bind`,
+      url: `${url}/site/apply`,
       method:'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -79,9 +77,15 @@ Page({
         wx.hideLoading()
         let res = result.data
         if(res.status == '200'){
-          wx.redirectTo({
-            url: '/pages/login/login'
+          wx.showToast({
+            title:"提交成功,客服将在1-3个工作日内与您联系",
+            icon:"none"
           })
+          setTimeout(()=>{
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
+          },1500)
         }else{
           wx.showToast({
             title:res.info,

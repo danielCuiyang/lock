@@ -96,7 +96,6 @@
         <view class="dialog_time" hidden="{{hiddenTime}}" >
             <view class="title">{{timeTitle}}</view>
             <view class="content">
-
                 <view class="label">
                     选择日期:
                 </view>
