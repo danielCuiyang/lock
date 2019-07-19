@@ -55,6 +55,10 @@ Page({
     this.getData()
   },
   getData(){
+    wx.showLoading({
+      title:"加载中",
+      mask:true
+    })
     let url = app.globalData.url
     let openid = app.globalData.openid
     let list = this.data.list
@@ -62,6 +66,7 @@ Page({
     wx.request({
       url: `${url}/site/total?openid=${openid}`,
       success:result=>{
+        wx.hideLoading()
         let res = result.data.data
         if(result.data.status == 200){
           let statusTotal = res.statusTotal
@@ -77,6 +82,13 @@ Page({
             total
          })
         }
+      },
+      fail(error){
+        wx.hideLoading()
+        wx.showToast({
+          title:"服务器繁忙",
+          icon:"none"
+        })
       }
     })
   },
