@@ -4,4 +4,62 @@
     color: #67c23a;
     background: #fff;
 }
+.search{
+    position: fixed;
+    width: 100%;
+    padding: 0 24rpx;
+    box-sizing: border-box;
+    top: 24rpx;
+    z-index: 3;
+    display: flex;
+    height: 74rpx;
+    background: #fff;
+}
+.search image{
+    width:25rpx;
+    height: 14rpx;
+}
+.search .picker{
+    background-color: #f5f5f5;
+    border-radius: 6rpx;
+    color: #181818;
+    font-size: 28rpx;
+    width: 200rpx;
+    line-height: 74rpx;
+    padding-left: 24rpx;
+}
+.merchant{
+    color: #181818;
+    font-size: 28rpx;
+    height: 74rpx;
+    line-height: 74rpx;
+}
+.search_input{
+    flex:1;
+    /* padding-left: 224rpx; */
+    background-color: #f5f5f5;
+    padding-left: 24rpx;
+    border-radius: 6rpx;
+}
+.search_ico{
+    position: absolute;
+    width:30rpx;
+    height:30rpx;
+    left: 164rpx;
+    top: 22rpx;
+}
+.search_input input{
+    color: #181818;
+    font-size: 28rpx;
+    height: 100%;
+}
+.input-placeholder{
+    color: #c6c6c6;
+}
+.search .manager{
+    font-size: 30rpx;
+    color: #080808;
+    align-self: center;
+    padding-left: 52rpx;
+}
 

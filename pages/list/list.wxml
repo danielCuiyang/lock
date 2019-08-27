@@ -1,3 +1,25 @@
+<view class="search">
+    <picker class="picker" bindchange="searchPicker" value="{{searchValIndex}}" range="{{searchList}}">
+        <view >
+            {{searchList[searchValIndex]}} 
+            <image src="../../images/icon13.png"></image>
+        </view>
+    </picker>
+
+    <view class="search_input" wx:if="{{searchValIndex== 0}}">
+        <input confirm-type="search" bindconfirm="searchNameFun" value="{{name}}" placeholder="搜索用户名称" />
+    </view>
+    <view class="search_input" wx:if="{{searchValIndex== 1}}" >
+        <picker class="merchant" bindchange="searchMerchant" value="{{merchantIndex}}" range-key="name" range="{{merchantList}}" >
+            <view class="merchant">
+                {{merchantList[merchantIndex].name}} 
+            </view>
+        </picker>
+    </view>
+    <view class="search_input" wx:if="{{searchValIndex== 2}}">
+        <input confirm-type="search" bindconfirm="searchPhoneFun" value="{{phone}}" placeholder="搜索用户手机号" />
+    </view>
+</view>
 <view class="list {{listId==4 || listId==5 ? 'complete' : ''}}">
     <block wx:for="{{list}}" wx:key="{{item.id}}">
        <view class="list_box">

@@ -2,6 +2,8 @@ const util = require('../../utils/util.js')
 const app = getApp()
 Page({
     data:{
+        searchList:["用户名称","商户名称","用户手机号"],
+        searchValIndex:0,
         listId:'2',
         init:false, //onload 不与 onshow 同时getData
         orderId:'',
@@ -27,29 +29,101 @@ Page({
         hideAddRemark : true,
         // 完工确认 
         hideComplete:true,
+        // 商户列表
+        merchantIndex:-1,
+        merchantList:[],
+        // 搜索参数
+        name:'',
+        phone:'',
+        merchantId:''
     },
-    onReachBottom: function() {
-        // Do something when page reach bottom.
-        if(!this.data.loadEnd&&!this.data.empty){
-            let page = this.data.page
-            page++
-            this.setData({
-                page,
-                loadEnd:true
-            })
-            this.getData()
-        } 
+    searchPicker(e){
+        let searchValIndex = e.detail.value
+        this.setData({
+            searchValIndex
+        })
+        this.setData({
+            page:1
+        })
+    },
+    searchNameFun(e){
+        let name = e.detail.value
+        this.setData({
+            page:1,
+            list:[],
+            name,
+            loadEnd:false,
+            empty:false
+        })
+        this.getData()
+    },
+    searchMerchant(e){
+        let merchantIndex = e.detail.value
+        let merchantId = this.data.merchantList[merchantIndex].id
+        this.setData({
+            page:1,
+            merchantIndex,
+            list:[],
+            loadEnd:false,
+            empty:false,
+            merchantId
+        })
+        this.getData()
+    },
+    searchPhoneFun(e){
+        let phone = e.detail.value
+        this.setData({
+            page:1,
+            list:[],
+            phone,
+            loadEnd:false,
+            empty:false
+        })
+        this.getData()
     },
     getData(){
         let list = this.data.list
         let listId = this.data.listId
-        let page = this.data.page
         let url = app.globalData.url
         let openid = app.globalData.openid
+        let page = this.data.page
+        let searchValIndex = this.data.searchValIndex
+        let name = this.data.name
+        let phone = this.data.phone
+        let merchantId = this.data.merchantId
+        let reqUrl
+        if(searchValIndex == 0 ){
+            reqUrl = `${url}/site/tickets?openid=${openid}
+            &status=${listId}&page=${page}&name=${name}`
+        }else if(searchValIndex == 1){
+            reqUrl = `${url}/site/tickets?openid=${openid}
+            &status=${listId}&page=${page}&merchant=${merchantId}`
+        }else if(searchValIndex == 2){
+            reqUrl = `${url}/site/tickets?openid=${openid}
+            &status=${listId}&page=${page}&phone=${phone}`
+        }
+        wx.showLoading({
+            title:'加载中',
+            mask:true
+        })
         wx.request({
-            url: `${url}/site/tickets?openid=${openid}&status=${listId}&page=${page}`,
+            url:reqUrl ,
             success:result=>{
               let res = result.data.data
+              this.setData({
+                  merchantList : res.merchants
+              })
+              wx.hideLoading()
+              if(res.data.length == 0 && page == 1){
+                list = res.data
+                this.setData({
+                    loadEnd:false,
+                    empty:true,
+                    init:true,
+                    list
+                })
+                return
+              }
               if(res.data.length == 0 ){
                 this.setData({
                     loadEnd:false,
@@ -77,6 +151,18 @@ Page({
             }
         })
     },
+    onReachBottom: function() {
+        // Do something when page reach bottom.
+        if(!this.data.loadEnd&&!this.data.empty){
+            let page = this.data.page
+            page++
+            this.setData({
+                page,
+                loadEnd:true,
+            })
+            this.getData()
+        } 
+    },
     goDetail(e){
         let listId = this.data.listId
         let orderId = e.target.dataset.id
@@ -95,11 +181,12 @@ Page({
             "999": "有异常"
         }
         var listId = e.id;
+
         this.setData({
             listId,
-            date,
+            date
         })
-        if(!this.data.init){
+        if(!init){
             this.getData()
         }
         wx.setNavigationBarTitle({
@@ -108,11 +195,13 @@ Page({
     },
     onShow(){
         if(this.data.listId&&this.data.init){
+            let page = this.data.page
+            page = 1
             this.setData({
                 list:[],
-                page:1,
+                page,
                 loadEnd:true,
-                empty:false,
+                empty:false
             })
             this.getData()
         }
@@ -122,7 +211,7 @@ Page({
             this.setData({
                 date: e.detail.value
              })
-        },
+    },
     bindPickerChange: function (e) {
         this.setData({
             index: e.detail.value

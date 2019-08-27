@@ -812,9 +812,9 @@ Page({
             success: function (res) {
                 let tempFilePaths = res.tempFilePaths
                 let files = that.data.files.concat(tempFilePaths)
-                if(files.length > 4){
+                if(files.length > 8){
                     wx.showToast({
-                        title:"图片最多四张",
+                        title:"图片最多8张",
                         icon:"none"
                     })
                     return
@@ -834,8 +834,6 @@ Page({
                         },
                         success (result){
                           const res = result.data
-                          console.log(res)
-                          console.log("img suceess")
                           //do something
                         }
                       })

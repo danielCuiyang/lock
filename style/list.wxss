@@ -1,6 +1,6 @@
 .list{
     padding:40rpx 40rpx;
-
+    padding-top: 115rpx;
 }
 .list_box{
     border:1px solid #ededed;
