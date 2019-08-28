@@ -38,11 +38,19 @@
             <view>
                 <text class="label">下单日期:</text>
                 <text class="content">{{list.order_date}}</text>
-            </view>         
+            </view>             
+            <view>
+                <text class="label">是否代收费用:</text>
+                <text class="content">{{list.is_collect == 0 ? "否" : "是"}}</text>
+            </view>
+            <view wx:if="{{list.is_collect != 0 }}">
+                <text class="label">代收费用:</text>
+                <text class="content price">￥{{list.collect_fee}}</text>
+            </view> 
             <view>
                 <text class="label">工单费用:</text>
                 <text class="content price">￥{{list.total_fee}}</text>
-            </view>         
+            </view>            
         </view>
     </block>
     <view class="header">
@@ -83,7 +91,7 @@
                     <text class="label">联系人:</text>
                     <text class="content">{{list.customer_name}}</text>
                 </view>
-                <view>
+                <view bind:tap ="phoneCall">
                     <text class="label">联系电话:</text>
                     <text class="content">{{list.phone}}</text>
                 </view>

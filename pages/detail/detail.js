@@ -99,6 +99,15 @@ Page({
             }
         })
     },
+    phoneCall(){
+        let phone = this.data.list.phone
+        wx.makePhoneCall({
+            phoneNumber: phone,
+            success: function(res) {
+                // success
+            }
+        })
+    },
     emojiReg(val){
         let emojiReg = /(\ud83c[\udf00-\udfff])|(\ud83d[\udc00-\ude4f])|(\ud83d[\ude80-\udeff])/
         if(emojiReg.test(val)){
