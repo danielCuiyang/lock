@@ -28,6 +28,10 @@
                 <text class="content">{{list.lock_brand}}</text>
             </view>
             <view>
+                <text class="label">锁型号:</text>
+                <text class="content">{{list.model}}</text>
+            </view>
+            <view>
                 <text class="label">锁数量:</text>
                 <text class="content">{{list.lock_num}}把</text>
             </view>         

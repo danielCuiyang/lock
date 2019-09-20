@@ -42,9 +42,14 @@
                 <text class="content">{{item.lock_brand}}</text>
             </view>
             <view>
+                <text class="label">锁型号:</text>
+                <text class="content">{{item.model}}</text>
+            </view>
+            <view>
                 <text class="label">锁数量:</text>
                 <text class="content">{{item.lock_num}}把</text>
             </view>
+
             <block wx:if="{{item.status == 3 || item.status == 2}}">
                 <view>
                     <text class="label">联系人:</text>

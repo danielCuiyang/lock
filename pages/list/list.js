@@ -324,6 +324,7 @@ Page({
     confirmComplete(e){
         let orderId = e.target.dataset.id
         let lidx = e.target.dataset.lidx
+        let list = this.data.list
         this.setData({
             hideComplete:false,
             orderId,
@@ -338,9 +339,17 @@ Page({
         let list = this.data.list;
         let sn = list[lidx].sn
         let must_sn = list[lidx].must_sn
+        let finish_images = list[lidx].finish_images
         if(must_sn == 1 && !sn ){
             wx.showToast({
                 title:'SN号为必填字段,请前去详情页面添加SN号',
+                icon:'none'
+            })
+            return
+        }
+        if(finish_images.length == 0 ){
+            wx.showToast({
+                title:'请前往详情添加完工图片',
                 icon:'none'
             })
             return
