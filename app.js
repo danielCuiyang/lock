@@ -40,10 +40,15 @@ App({
             success:result=>{
               let res = result.data
               this.globalData.openid = res.data.openid
-              if(res.status == '403'){
-                wx.redirectTo({
-                  url: '/pages/login/login',
+              if(!res.data.openid){
+                wx.showToast({
+                  title:res.info+"openid获取失败",
+                  icon: 'none',
                 })
+                return
+              }
+              if(res.status == '403'){
+                this.globalData.islogin = false
               }
               resolve()
             }
@@ -53,9 +58,10 @@ App({
     })
   },
   globalData: {
+    islogin:true,
     userInfo: null,
     openid:"",
-    url:'https://wws.zhaoxiaoqiang.com',
+    url:'https://api.qoyo.com.cn',
     sn:"",
   }
 })

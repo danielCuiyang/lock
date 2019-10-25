@@ -51,8 +51,15 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
   //事件处理函数
-  refreshData: function() {
-    this.getData()
+  loginOut: function() {
+    wx.showActionSheet({
+      itemList: ["退出登录"],
+      success(res){
+        wx.redirectTo({
+          url: '/pages/login/login',
+        })
+      }
+    })
   },
   getData(){
     wx.showLoading({
@@ -95,10 +102,14 @@ Page({
   onLoad: function () {
     var that = this
     if(app.globalData.openid){
-      this.getData()
+      if(app.globalData.islogin){
+        this.getData()
+      }
    }else{
     app.login().then((res)=>{
-      this.getData()
+      if(app.globalData.islogin){
+        this.getData()
+      }
     })
    }
     if (app.globalData.userInfo) {
@@ -131,6 +142,18 @@ Page({
   onShow(){
     if(app.globalData.openid){
       this.getData()
+    }
+  },
+  navigatorListFun(e){
+    let url = e.currentTarget.dataset.url
+    if(app.globalData.islogin){
+      wx.navigateTo({
+        url: url
+      })
+    }else{
+      wx.redirectTo({
+        url: '/pages/login/login',
+      })
     }
   },
   getUserInfo: function(e) {

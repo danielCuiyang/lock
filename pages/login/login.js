@@ -11,7 +11,7 @@ Page({
   //事件处理函数
   onLoad: function () {
     let openid = app.globalData.openid
-    let src = `http://wws.zhaoxiaoqiang.com/site/code?position=${openid}`
+    let src = `https://api.qoyo.com.cn/site/code?position=${openid}`
     this.setData({
       src
     })
@@ -37,7 +37,7 @@ Page({
   refreshCode(){
     var arg = Math.random();
     let openid = app.globalData.openid
-    let src = `http://wws.zhaoxiaoqiang.com/site/code?id=${arg}&position=${openid}`
+    let src = `https://api.qoyo.com.cn/site/code?id=${arg}&position=${openid}`
     this.setData({
       src
     })
@@ -89,6 +89,7 @@ Page({
         wx.hideLoading()
         let res = result.data
         if(res.status == '200'){
+          app.globalData.islogin = true
           wx.redirectTo({
             url: '/pages/index/index'
           })

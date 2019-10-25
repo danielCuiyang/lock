@@ -75,3 +75,49 @@
     color:#f44444;
     margin: 0;
 }
+.mask{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 222;
+    background: rgba(0,0,0,.6);
+}
+.mask_box{
+    width:550rpx;
+    height: 400rpx;
+    border-radius: 15rpx;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.mask_box .title{
+    font-size: 28rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    color:#181818;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+}
+.mask_box .content{
+    text-align: left;
+    color:#ad7d7d;
+    padding:15rpx;
+    border-bottom: 1px solid #f3f3f3;
+}
+.login_btn{
+    width:200rpx;
+    border-radius: 10rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color:#fff;
+    background: #6485ca;
+    margin:auto;
+    margin-top: 40rpx;
+}

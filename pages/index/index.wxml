@@ -3,7 +3,7 @@
             <view class="userinfo">
                 <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
                 <block wx:else>
-                    <image bindtap="refreshData" class="userinfo_avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                    <image bindtap="loginOut" class="userinfo_avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
                     <text class="userinfo_nickname">{{userInfo.nickName}}</text>
                 </block>
             </view>
@@ -41,11 +41,11 @@
 
             <view class="weui-grids">
                 <block wx:for="{{list}}" wx:key="{{item.id}}">
-                    <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+                    <view data-url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active" bind:tap="navigatorListFun">
                         <image class="weui-grid__icon" src="{{item.src}}" />
                         <view class="weui-grid__label">{{item.name}}</view>
                         <view class="weui-grid__label weui-grid__label_c">{{item.num}}</view>
-                    </navigator>
+                    </view>
                 </block>
             </view>        
         </view>
